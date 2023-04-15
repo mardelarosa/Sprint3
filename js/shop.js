@@ -70,7 +70,7 @@ var cart = [];
 
 var total = 0;
 
-var sum = 0;
+var counter = 0;
 
 
 
@@ -126,6 +126,11 @@ function cleanCart() {
     cartList.length = 0;
     cart.length = 0;
     console.log(cartList)
+
+    counter = 0;
+    document.getElementById("count_product").innerHTML = counter;
+    generateCart();
+    printCart();
 }
 
 // Exercise 3
@@ -162,6 +167,8 @@ function generateCart() {
 
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+    cart.length = 0;
 
     cartList.forEach(product => {
 
