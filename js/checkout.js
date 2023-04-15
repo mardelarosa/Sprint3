@@ -1,7 +1,7 @@
 // Exercise 7
 function validate() {
 
-	
+
 	// Get the input fields
 	var fName = document.getElementById("fName");
 	var fEmail = document.getElementById("fEmail");
@@ -21,16 +21,16 @@ function validate() {
 	var errorPhone = document.getElementById("errorPhone");
 
 	// Regular Expression
-	const regExpName = /^\[a-zA-Z]{3,}$/;
-	const regExpLastN = /^\[a-zA-Z]{3,}$/;
-	const regExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-	const regExpPass = /^(.*[a-z])(.*\d)[a-z\d\w\W]{4,}$/;
-	const regExpAddress = /^\.{3,}$/;
-	const regExPhone = /^\d{9}$/;
+	const regExpName = /^[-'a-zA-ZÀ-ÿ\s]{3,}$/i; 
+	//const regExpLastN = /^[-'a-zA-ZÀ-ÿ\s]{3,}$/i; 
+	const regExpEmail = /^[-'a-zA-Z0-9_+]+@[-'a-zA-Z0-9_+]+\.[a-z]{2,3}$/i; 
+	const regExpPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/  
+	const regExpAddress = /^.{3,}$/;
+	const regExPhone = /^\d{9}$/; 
 
 	const validation = [fName, fEmail, fAddress, fLastN, fPassword, fPhone];
 
-	const regExpTest = [regExpName, regExpEmail, regExpAddress, regExpLastN, regExpPass, regExPhone];
+	const regExpTest = [regExpName, regExpEmail, regExpAddress, regExpName, regExpPass, regExPhone];
 
 	const errors = [errorName, errorEmail, errorAddress, errorLastN, errorPassword, errorPhone];
 
@@ -40,7 +40,7 @@ function validate() {
 
 	for (let i = 0; i < 6; i++) {
 
-		if (validation[i].value == "" || regExpTest[i].test(validation[i].value == false)) {
+		if (validation[i].value == "" || regExpTest[i].test(validation[i].value) == false) {
 
 
 			validation[i].classList.add("is-invalid");
@@ -67,7 +67,7 @@ function validate() {
 	}
 
 
-	
+
 	console.log(errors);
 	console.log(validation);
 	console.log(regExpTest);
